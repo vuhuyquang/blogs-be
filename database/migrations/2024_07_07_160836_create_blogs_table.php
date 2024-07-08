@@ -17,7 +17,7 @@ return new class extends Migration
             $table->text('slug')->unique();
             $table->text('short_content')->unique();
             $table->text('content')->unique();
-            $table->integer('category_id')->unsigned();
+            $table->tinyInteger('category_id')->unsigned();
             $table->integer('author_id')->unsigned();
             $table->tinyInteger('reading_time')->unsigned();
             $table->text('image');
