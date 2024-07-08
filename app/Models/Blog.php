@@ -20,4 +20,9 @@ class Blog extends Model
     'reading_time',
     'image',
   ];
+
+  public function category()
+  {
+    return $this->hasOne(Category::class, 'id', 'category_id');
+  }
 }

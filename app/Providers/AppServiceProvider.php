@@ -13,6 +13,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->singleton(\App\Repositories\Interfaces\UserRepositoryInterface::class,\App\Repositories\Implements\UserRepository::class);
         $this->app->singleton(\App\Repositories\Interfaces\BlogRepositoryInterface::class,\App\Repositories\Implements\BlogRepository::class);
+        $this->app->singleton(\App\Repositories\Interfaces\CategoryRepositoryInterface::class,\App\Repositories\Implements\CategoryRepository::class);
     }
 
     /**
