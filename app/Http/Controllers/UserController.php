@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Services\UserService;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -14,7 +15,7 @@ class UserController extends Controller
     $this->userService = $userService;
   }
 
-  public function getAll(Request $request)
+  public function getAll(Request $request): JsonResponse
   {
     $page = $request->query('page', 1);
     $size = $request->query('size', 1);

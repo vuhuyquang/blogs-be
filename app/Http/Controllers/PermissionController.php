@@ -3,63 +3,25 @@
 namespace App\Http\Controllers;
 
 use App\Models\Permission;
+use App\Services\PermissionService;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class PermissionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
+  private $permissionService;
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
+  public function __construct(PermissionService $permissionService)
+  {
+    $this->permissionService = $permissionService;
+  }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Permission $permission)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Permission $permission)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Permission $permission)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Permission $permission)
-    {
-        //
-    }
+  public function getAll(Request $request): JsonResponse
+  {
+    $page = $request->query('page', 1);
+    $size = $request->query('size', 20);
+    $search = $request->query('search');
+    $response = $this->permissionService->getAll($page, $size, $search);
+    return response()->json($response);
+  }
 }

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Services\BlogService;
-use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 
 class BlogController extends Controller
 {
@@ -14,7 +14,7 @@ class BlogController extends Controller
         $this->blogService = $blogService;
     }
 
-    public function getAll()
+    public function getAll(): JsonResponse
     {
         $response = $this->blogService->getAll();
         return response()->json($response);
