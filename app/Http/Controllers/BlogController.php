@@ -14,11 +14,9 @@ class BlogController extends Controller
         $this->blogService = $blogService;
     }
 
-    public function getAll(Request $request)
+    public function getAll()
     {
-        $page = $request->query('page', 1);
-        $size = $request->query('size', 20);
-        $response = $this->blogService->getAll($page, $size);
+        $response = $this->blogService->getAll();
         return response()->json($response);
     }
 }

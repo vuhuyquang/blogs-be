@@ -14,10 +14,11 @@ class BlogService extends BaseService
     $this->blogRepository = $blogRepository;
   }
 
-  public function getAll($page, $size): array
+  public function getAll(): array
   {
     try {
-      // $response = $this->blogRepository->select(['id', 'title', 'slug', 'short_content', 'category_id', 'author_id', 'reading_time', 'created_at'], $search, ['title', 'slug'], 'id', 'DESC', $page, $size, []);
+      $page = 1;
+      $size = 3;
       $response = $this->blogRepository->getPostList($page, $size);
       return $this->transformData(true, "Lấy danh sách bài viết thành công.", $response);
     } catch (\Exception $e) {
